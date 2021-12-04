@@ -1,0 +1,6 @@
+jsx-> writting complete html in an openning and closing tags 
+eg-> <>write you text here</>
+
+<></> => this is jsx synta
+jsx is compiled by the babel
+
