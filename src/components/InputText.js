@@ -6,6 +6,7 @@ export default function InputText(props) {
   const TextBox = (event) => {
     setText(event.target.value);
     userText = text;
+    // userText.style.backgroundColor='cyan';
   };
   const SetUpper = () => {
     setText(text.toUpperCase());
@@ -41,7 +42,9 @@ export default function InputText(props) {
           rows="10"
           value={text}
           placeholder="Enter text here"
-          onChange={TextBox}
+          onChange={TextBox} 
+          style={{backgroundColor:(props.mode==='dark')?'#1B1D36':'white',
+          color:(props.mode==='light')?'black':'cyan'}}
         ></textarea>
       </div>
       <div className="row">
@@ -50,7 +53,7 @@ export default function InputText(props) {
             Convert Uppercase
           </button>
         </div>
-        <div className="col-sm-4 text-center">
+        <div className="col-sm-4 text-center" style={{backgroundColor:(props.mode==='dark')?'#1B1D36':'white'}}>
           <button className="btn btn-primary" onClick={SetLower}>
             Convert Lowercase
           </button>
@@ -85,15 +88,15 @@ export default function InputText(props) {
           </div>
         </div>
         <h3>Preview</h3>
-        <p className="mx-3">{text}</p>
+        <p className="mx-3">{text.length>0?text:"Type something to preview...."}</p>
       </div>
-      <div className="container">
+      {/* <div className="container">
         <div className="row">
           <div className="col-sm-3">
             <button className="btn btn-primary">Count Frequeny</button>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
