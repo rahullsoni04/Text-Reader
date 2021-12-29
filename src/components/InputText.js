@@ -6,13 +6,15 @@ export default function InputText(props) {
   const TextBox = (event) => {
     setText(event.target.value);
     userText = text;
-    // userText.style.backgroundColor='cyan';
+   // userText.style.backgroundColor='cyan';
   };
   const SetUpper = () => {
     setText(text.toUpperCase());
+    props.showAlert("primary","converted to uppercase");
   };
   const SetLower = () => {
     setText(text.toLowerCase());
+    props.showAlert("primary","converted to lowercase");
   };
   const [freq, newFreq] = useState(0);
   const FrequentWord = () => {
@@ -59,7 +61,7 @@ export default function InputText(props) {
           </button>
         </div>
         <div className="col-sm-4 text-center">
-          <button className="btn btn-primary" onClick={FrequentWord}>
+          <button className="btn btn-primary">
             Frequency
           </button>
         </div>
