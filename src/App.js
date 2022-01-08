@@ -22,8 +22,8 @@ function App() {
 
   const showAlert = (type, message) => {
     setalert({
-      msg: message,
       type: type,
+      msg: message,
     });
     setTimeout(() => {
       setalert(null);
@@ -31,7 +31,6 @@ function App() {
   };
 
   const UserMode = (cls) => {
-    console.log(cls);
     if(cls!=null){
       document.body.classList="bg-"+cls;
     }

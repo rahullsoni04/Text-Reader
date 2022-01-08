@@ -10,19 +10,20 @@ export default function InputText(props) {
   };
   const SetUpper = () => {
     setText(text.toUpperCase());
-    props.showAlert("primary", "converted to uppercase");
+    props.showAlert("success", "converted to uppercase");
   };
   const SetLower = () => {
     setText(text.toLowerCase());
-    props.showAlert("primary", "converted to lowercase");
+    props.showAlert("success", "converted to lowercase");
   };
   const ClearTextArea = () => {
     setText("");
-    props.showAlert("primary", "Cleared");
+    props.showAlert("danger", "Cleared");
   };
   const CopyText=()=>{
     let text=document.getElementById('inputText');
     navigator.clipboard.writeText(text.value);
+    props.showAlert("success","Copied to clipboard")
   }
   return (
     <>
@@ -87,7 +88,7 @@ export default function InputText(props) {
             <p>{text.length}</p>
             <p>
               {
-                text.split(" ").filter((element) => {
+                text.split(/\s/).filter((element) => {
                   return element.length !== 0;
                 }).length
               }
