@@ -13,7 +13,7 @@ import Alert from "./components/Alert.js";
 import React, { useState } from "react";
 
 //importing router dom from https://v5.reactrouter.com/web/guides/quick-start
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, choiceMode] = useState("light");
@@ -30,13 +30,16 @@ function App() {
     }, 2000);
   };
 
-  const UserMode = () => {
-    if (mode === "dark") {
+  const UserMode = (cls) => {
+    console.log(cls);
+    if(cls!=null){
+      document.body.classList="bg-"+cls;
+    }
+    else if (mode === "dark") {
       choiceMode("light");
       choiceModeBtn("Dark Mode");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
-      console.log(modeBtn);
       showAlert("success", "light mode enabled");
       setTimeout(() => {
         document.title = "Text Utils";
@@ -44,7 +47,7 @@ function App() {
       setTimeout(() => {
         document.title = "Thank You";
       }, 1500);
-    } else {
+    } else if (mode === "light"){
       choiceMode("dark");
       choiceModeBtn("Light Mode");
       document.body.style.backgroundColor = "#1B1D36";
@@ -81,7 +84,7 @@ function App() {
                 showAlert={showAlert}
               />}
             />
-            <Route path="/about" element={<About/>}/>
+            <Route path="/about" element={<About mode={mode} />}/>
           </Routes>
         </div>
       </Router>

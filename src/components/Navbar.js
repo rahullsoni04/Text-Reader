@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 //importing router dom from https://v5.reactrouter.com/web/guides/quick-start
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 
 export default function Navbar(props) {
   
@@ -40,12 +40,19 @@ export default function Navbar(props) {
               </Link>
             </li>
           </ul>
+          <div className="d-flex mx-3">
+            <button className="bg-primary rounded mx-1"  onClick={()=>{props.userMode('primary')}} style={{height:'30px',width:'30px'}} ></button>
+            <button className="btn btn-secondary rounded mx-1"  onClick={()=>{props.userMode('secondary')}} style={{height:'30px',width:'30px'}} ></button>
+            <button className="btn btn-success rounded mx-1"  onClick={()=>{props.userMode('success')}} style={{height:'30px',width:'30px'}} ></button>
+            <button className="btn btn-danger rounded mx-1"  onClick={()=>{props.userMode('danger')}} style={{height:'30px',width:'30px'}} ></button>
+            <button className="btn btn-warning rounded mx-1"  onClick={()=>{props.userMode('warning')}} style={{height:'30px',width:'30px'}} ></button>
+          </div>
           <div className="form-check form-switch">
             <input
               className="form-check-input"
               type="checkbox"
               id="flexSwitchCheckDefault"
-              onClick={props.userMode}
+              onClick={()=>{props.userMode(null)}}
             />
             <label className={`form-check-label text-${(props.mode==='dark')?'light':'dark'}`} htmlFor="flexSwitchCheckDefault">
               {props.modeBtn}

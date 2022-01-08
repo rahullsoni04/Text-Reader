@@ -1,34 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function About() {
-  const [theme, choiceTheme] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
-  const [themeBtn, changeTheme] = useState("Enable Dark Mode");
-  const ChangeState = () => {
-    theme.color === "black"
-      ? changeTheme("Enable Light Mode")
-      : changeTheme("Enable Dark Mode");
-    choiceTheme(
-      theme.color === "black"
-        ? {
-            color: "white",
-            backgroundColor: "black",
-            border:'1px solid white'
-          }
-          : {
-            color: "black",
-            backgroundColor: "white",
-          }
-    );
-  };
+export default function About(props) {
+  // const [theme, choiceTheme] = useState({
+  //   color: props.mode?"black":"white",
+  //   backgroundColor: "white",
+  // });
+  let theme={
+    color:props.mode==='light'?'#1723bc':'#00ffff',
+    backgroundColor:props.mode==='light'?'white':'#171b47',
+    border : props.mode==='light'?'1px solid':'1 px solidx',
+    borderColor:props.mode==='light'?'#9592e800':'dark',
+  }
   return (
     <>
-      <div className="container my-3" style={theme}>
-        <button className=" btn btn-primary my-3" onClick={ChangeState}>
-          {themeBtn}
-        </button>
+      <div className="container my-3" >
+        <h1 className="my-4">About Us</h1>
         <div className="spacer my-3"></div>
         <div className="accordion" id="accordionExample" style={theme}>
           <div className="accordion-item" style={theme}>
@@ -51,7 +37,7 @@ export default function About() {
               aria-labelledby="headingOne"
               data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body">
+              <div className="accordion-body" style={theme}>
                 <strong>This is the first item's accordion body.</strong> It is
                 shown by default, until the collapse plugin adds the appropriate
                 classes that we use to style each element. These classes control
@@ -97,7 +83,7 @@ export default function About() {
               </div>
             </div>
           </div>
-          <div className="accordion-item">
+          <div className="accordion-item" style={theme}>
             <h2 className="accordion-header" id="headingThree">
               <button
                 className="accordion-button collapsed"
